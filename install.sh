@@ -40,3 +40,20 @@ sudo sed -i '/listen = \/run\/php\/php8.2-fpm.sock/a \
 # Restart services
 sudo systemctl restart php8.2-fpm
 sudo systemctl restart nginx
+
+# mysql
+sudo apt update
+sudo apt install mysql-server
+sudo systemctl start mysql.service
+sudo mysql
+
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'Admin12@';
+
+exit
+
+mysql -u root -p
+
+ALTER USER 'root'@'localhost' IDENTIFIED WITH auth_socket;
+exit;
+sudo mysql_secure_installation
+systemctl status mysql.service
